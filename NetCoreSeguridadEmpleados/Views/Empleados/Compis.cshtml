@@ -1,0 +1,33 @@
+﻿@model List<Empleado>
+
+@{
+    ViewData["Title"] = "Compis";
+}
+
+<h1>Compis</h1>
+
+<table class="table table-bordered table-warning">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Departamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oficio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departamento)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
