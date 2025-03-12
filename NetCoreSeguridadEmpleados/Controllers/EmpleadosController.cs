@@ -43,5 +43,22 @@ namespace NetCoreSeguridadEmpleados.Controllers
                 this.repo.GetEmpleadosDepartamentoAsync(idDepartamento);
             return View(empleados);
         }
+
+        [AuthorizeEmpleados]
+        [HttpPost]
+        public async Task<IActionResult> Compis(int incremento)
+        {
+            //DEBEMOS RECUPERAR EL ID DEL DEPARTAMENTO
+            //DEL USUARIO QUE SE HA VALIDADO
+            string dato =
+                HttpContext.User.FindFirst("Departamento").Value;
+            int idDepartamento = int.Parse(dato);
+            await this.repo.UpdateSalarioEmpleadosAsync
+                (idDepartamento, incremento);
+            List<Empleado> empleados = await
+                this.repo.GetEmpleadosDepartamentoAsync(idDepartamento);
+            return View(empleados);
+        }
+
     }
 }

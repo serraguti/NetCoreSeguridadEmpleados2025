@@ -6,11 +6,25 @@
 
 <h1>Compis</h1>
 
+@if (Context.User.IsInRole("PRESIDENTE") == true 
+|| Context.User.IsInRole("DIRECTOR") == true){
+    <form method="post">
+        <label>Incremento salarial</label>
+        <input type="text" name="incremento" class="form-control"/>
+        <button class="btn btn-info">
+            A subir salarios!!!!
+        </button>
+    </form>
+}
+
+
+
 <table class="table table-bordered table-warning">
     <thead>
         <tr>
             <th>Apellido</th>
             <th>Oficio</th>
+            <th>Salario</th>
             <th>Departamento</th>
         </tr>
     </thead>
@@ -18,15 +32,10 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Apellido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Oficio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Departamento)
-                </td>
+                <td>@item.Apellido</td>
+                <td>@item.Oficio</td>
+                <td>@item.Salario</td>
+                <td>@item.Departamento</td>
             </tr>
         }
     </tbody>
