@@ -20,9 +20,10 @@ namespace NetCoreSeguridadEmpleados.Controllers
             return View(empleados);
         }
 
-        public async Task<IActionResult> Details(int idempleado)
+        [AuthorizeEmpleados]
+        public async Task<IActionResult> Details(int id)
         {
-            Empleado empleado = await this.repo.FindEmpleadoAsync(idempleado);
+            Empleado empleado = await this.repo.FindEmpleadoAsync(id);
             return View(empleado);
         }
 
