@@ -32,7 +32,7 @@ namespace NetCoreSeguridadEmpleados.Controllers
             return View();
         }
 
-        [AuthorizeEmpleados]
+        [AuthorizeEmpleados(Policy = "SOLOJEFES")]
         public async Task<IActionResult> Compis()
         {
             //RECUPERAMOS EL DATO DEL CLAIM DE Departamento
@@ -44,7 +44,7 @@ namespace NetCoreSeguridadEmpleados.Controllers
             return View(empleados);
         }
 
-        [AuthorizeEmpleados]
+        [AuthorizeEmpleados(Policy = "SOLOJEFES")]
         [HttpPost]
         public async Task<IActionResult> Compis(int incremento)
         {
@@ -58,6 +58,18 @@ namespace NetCoreSeguridadEmpleados.Controllers
             List<Empleado> empleados = await
                 this.repo.GetEmpleadosDepartamentoAsync(idDepartamento);
             return View(empleados);
+        }
+
+        [AuthorizeEmpleados(Policy ="AdminOnly")]
+        public IActionResult AdminEmpleados()
+        {
+            return View();
+        }
+
+        [AuthorizeEmpleados(Policy = "SoloRicos")]
+        public IActionResult ZonaNoble()
+        {
+            return View();
         }
 
     }

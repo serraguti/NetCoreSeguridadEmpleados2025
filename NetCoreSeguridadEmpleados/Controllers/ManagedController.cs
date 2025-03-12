@@ -52,7 +52,15 @@ namespace NetCoreSeguridadEmpleados.Controllers
                 Claim claimDept =
                     new Claim("Departamento", empleado.Departamento.ToString());
                 identity.AddClaim(claimDept);
-
+                //INCLUIMOS UN CLAIM DE ADMIN A CUALQUIER EMPLEADO 
+                //AL AZAR (ARROYO)
+                if (empleado.IdEmpleado == 7499)
+                {
+                    //CREAMOS UN CLAIM
+                    Claim claimAdmin =
+                        new Claim("Admin", "Soy el super jefe de la empresa");
+                    identity.AddClaim(claimAdmin);
+                }
 
                 ClaimsPrincipal userPrincipal =
                     new ClaimsPrincipal(identity);
