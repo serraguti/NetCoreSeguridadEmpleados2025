@@ -21,6 +21,8 @@ namespace NetCoreSeguridadEmpleados.Filters
             string action =
                 context.RouteData.Values["action"].ToString();
             var id = context.RouteData.Values["id"];
+            var datos = context.HttpContext.Request.QueryString;
+            
             ITempDataProvider provider =
                 context.HttpContext.RequestServices
                 .GetService<ITempDataProvider>();

@@ -21,6 +21,15 @@ namespace NetCoreSeguridadEmpleados.Controllers
         }
 
         [AuthorizeEmpleados]
+        public async Task<IActionResult> Parametros
+            (int dato1, string dato2)
+        {
+            ViewData["DATO1"] = dato1;
+            ViewData["DATO2"] = dato2;
+            return View();
+        }
+
+        [AuthorizeEmpleados]
         public async Task<IActionResult> Details(int id)
         {
             Empleado empleado = await this.repo.FindEmpleadoAsync(id);

@@ -27,6 +27,22 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark"
+                               asp-controller="Empleados"
+                               asp-action="Parametros"
+                            asp-route-dato1="22"
+                               asp-route-dato2="dos dos">
+                                Parametros 1
+                            </a>
+                            <a class="nav-link text-dark"
+                               asp-controller="Empleados"
+                               asp-action="Parametros"
+                               asp-route-dato1="44"
+                               asp-route-dato2="cuatro cuatro">
+                                Parametros 2
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" 
                             asp-controller="Empleados" 
                             asp-action="Index">
